@@ -1,4 +1,6 @@
-const solution = () => {
+const solution = (a, b) => {
+  const remainder = a % b;
+  return remainder === 0 ? b : solution(b, remainder);
 };
 
 test('최대 공약수를 반환한다', () => {
