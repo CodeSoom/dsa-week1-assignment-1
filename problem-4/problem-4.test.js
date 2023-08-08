@@ -1,4 +1,6 @@
 //1. 가장 익숙한 방법으로 문제를 해결해 주세요.
+{
+  /*
 const solution = (n) => {
   let decimal = 0;
   let exponent = 0;
@@ -13,6 +15,15 @@ const solution = (n) => {
     n = n.slice(0, -1);
   }
   return decimal;
+};*/
+}
+//2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+const solution = (n, acc = 0, exponent = 0) => {
+  if (n.length === 1) {
+    return acc + parseInt(n, 10) * 2 ** exponent;
+  }
+  acc += parseInt(n.charAt(n.length - 1), 10) * 2 ** exponent;
+  return solution(n.slice(0, -1), acc, exponent + 1);
 };
 
 test("10진수 숫자를 반환한다", () => {
