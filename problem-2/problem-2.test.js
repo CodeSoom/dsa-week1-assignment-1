@@ -1,4 +1,20 @@
 const solution = (n) => {
+  if (n < 0) return 0;
+  if (n < 2) return n;
+
+  let current = 2;
+  let a = 0;
+  let b = 1;
+  let sum = a + b;
+
+  while (current < n) {
+    current += 1;
+    a = b;
+    b = sum;
+    sum = a + b;
+  }
+
+  return sum;
 };
 
 test('음수가 주어지면 0을 반환한다', () => {
