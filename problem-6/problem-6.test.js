@@ -1,4 +1,22 @@
 const solution = (n) => {
+  let a = 1;
+  if (n === 1) return a;
+
+  let b = 2;
+  if (n === 2) return b;
+
+  let count = 3;
+  let result = 4;
+
+  while (count < n) {
+    const temp = result;
+    result = a + b + result;
+    a = b;
+    b = temp;
+
+    count += 1;
+  }
+  return result;
 };
 
 test('계단에 오를 수 있는 가지 수를 반환한다', () => {
