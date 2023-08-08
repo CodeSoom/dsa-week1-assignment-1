@@ -1,4 +1,18 @@
 const solution = (n) => {
+  if (n === 0) {
+    return '0';
+  }
+
+  let memo = '';
+  let number = n;
+
+  while (number > 1) {
+    const remainder = number % 2;
+    memo = remainder + memo;
+    number = Math.floor(number / 2);
+  }
+
+  return `1${memo}`;
 };
 
 test('이진수 문자열을 반환한다', () => {
