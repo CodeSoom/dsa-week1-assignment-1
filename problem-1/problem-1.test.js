@@ -1,5 +1,6 @@
 //1.가장 익숙한 방법으로 문제를 해결해 주세요.
-
+{
+  /*
 const solution = (numbers) => {
   let sum = 0;
   if (numbers.length === 0) {
@@ -10,9 +11,16 @@ const solution = (numbers) => {
   }
 
   return sum;
-};
+};*/
+}
 //2.이번에는 재귀 함수로 문제를 해결해 주세요.
-
+const solution = (numbers, index = 0) => {
+  if (index >= numbers.length) {
+    return 0;
+  } else {
+    return numbers[index] + solution(numbers, index + 1);
+  }
+};
 test("빈 배열은 0을 반환한다", () => {
   expect(solution([])).toBe(0);
 });
