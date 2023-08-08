@@ -1,5 +1,11 @@
-const solution = () => {
-};
+const solution = (binNum) => binNum
+  .split('')
+  .reverse()
+  .map((x, idx) => {
+    if (x === '0') { return 0; }
+    return (2 ** idx);
+  })
+  .reduce((acc, curr) => acc + curr);
 
 test('10진수 숫자를 반환한다', () => {
   expect(solution('0')).toBe(0);
