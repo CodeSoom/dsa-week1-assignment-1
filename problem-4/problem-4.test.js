@@ -18,12 +18,35 @@ const solution = (n) => {
 };*/
 }
 //2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+{
+  /*
 const solution = (n, acc = 0, exponent = 0) => {
   if (n.length === 1) {
     return acc + parseInt(n, 10) * 2 ** exponent;
   }
   acc += parseInt(n.charAt(n.length - 1), 10) * 2 ** exponent;
   return solution(n.slice(0, -1), acc, exponent + 1);
+};*/
+}
+
+//3. 꼬리 재귀 함수로 바꿔보세요.
+//4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+const solution = (n) => {
+  let acc = 0;
+  let exponent = 0;
+
+  const length = n.length;
+  if (length === 1) {
+    return acc + parseInt(n, 10) * 2 ** exponent;
+  }
+
+  while (exponent <= length - 1) {
+    acc += parseInt(n.charAt(n.length - 1), 10) * 2 ** exponent;
+
+    exponent++;
+    n = n.slice(0, -1);
+  }
+  return acc;
 };
 
 test("10진수 숫자를 반환한다", () => {
