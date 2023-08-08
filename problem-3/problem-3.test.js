@@ -1,4 +1,6 @@
 //1. 가장 익숙한 방법으로 문제를 해결해 주세요.
+{
+  /*
 const solution = (n) => {
   let binaryString = "";
   if (n <= 1) {
@@ -7,11 +9,20 @@ const solution = (n) => {
   while (n >= 1) {
     binaryString += (n % 2).toString();
     n = parseInt(n / 2);
-    console.log(n);
   }
   return binaryString.split("").reverse().join("");
-};
+};*/
+}
+//2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+const solution = (n, binaryString = "") => {
+  if (n <= 1) {
+    return n + binaryString;
+  }
 
+  const remainder = n % 2;
+  binaryString = remainder + binaryString;
+  return solution(parseInt(n / 2, 10), binaryString);
+};
 test("이진수 문자열을 반환한다", () => {
   expect(solution(0)).toBe("0");
   expect(solution(1)).toBe("1");
