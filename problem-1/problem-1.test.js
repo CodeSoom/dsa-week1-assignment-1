@@ -14,12 +14,30 @@ const solution = (numbers) => {
 };*/
 }
 //2.이번에는 재귀 함수로 문제를 해결해 주세요.
-const solution = (numbers, index = 0) => {
+{
+  /*
+  const solution = (numbers, index = 0) => {
   if (index >= numbers.length) {
     return 0;
   } else {
     return numbers[index] + solution(numbers, index + 1);
   }
+};
+*/
+}
+
+//3. 꼬리 재귀 함수로 바꿔보세요.
+//4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+const solution = (numbers) => {
+  let index = 0;
+  let acc = 0;
+
+  while (index < numbers.length) {
+    acc = acc + numbers[index];
+    index++;
+  }
+
+  return acc;
 };
 test("빈 배열은 0을 반환한다", () => {
   expect(solution([])).toBe(0);
