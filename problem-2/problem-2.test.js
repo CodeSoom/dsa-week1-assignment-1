@@ -1,5 +1,7 @@
 //1. 가장 익숙한 방법으로 문제를 해결해 주세요.
 //2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+{
+  /*
 const solution = (n) => {
   if (n <= -1) {
     return 0;
@@ -8,6 +10,27 @@ const solution = (n) => {
   } else {
     return solution(n - 1) + solution(n - 2);
   }
+};
+*/
+}
+//3. 꼬리 재귀 함수로 바꿔보세요.
+//4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+const solution = (n) => {
+  let pre = 0;
+  let curr = 1;
+  let temp = 0;
+  if (n <= -1) {
+    return 0;
+  } else if (n === 0 || n === 1) {
+    return n;
+  }
+  while (n >= 2) {
+    temp = pre;
+    pre = pre + curr;
+    curr = temp;
+    n--;
+  }
+  return pre + curr;
 };
 
 test("음수가 주어지면 0을 반환한다", () => {
