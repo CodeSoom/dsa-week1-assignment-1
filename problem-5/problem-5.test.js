@@ -1,4 +1,30 @@
-const solution = () => {
+// [1] 가장 익숙한 방법
+// [3] 꼬리 재귀 함수로
+// const solution = (a, b) => {
+//   const rest = b % a;
+//   if (rest === 0 || Number.isNaN(rest)) {
+//     return a;
+//   }
+
+//   return solution(rest, a);
+// };
+
+// [2] 재귀 함수로
+// 모르겠음
+
+// [4] 꼬리 재귀 최적화
+const solution = (bigger, smaller) => {
+  let a = bigger;
+  let b = smaller;
+  let rest;
+
+  while (rest !== 0) {
+    rest = a % b;
+    a = b;
+    b = rest;
+  }
+
+  return a;
 };
 
 test('최대 공약수를 반환한다', () => {
