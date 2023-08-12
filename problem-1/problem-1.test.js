@@ -51,6 +51,27 @@ const chunk = (data = [], size =1) => {
 };
  */
 
+/*
+3. 꼬리 재귀 함수로 바꿔보세요.
+4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+ */
+const solution = (numbers) => {
+  if (numbers.length === EMPTY_ARRAY_LENGTH) {
+    return EMPTY_ARRAY_LENGTH;
+  }
+
+  // eslint-disable-next-line no-use-before-define
+  return recursion(numbers, INITIALIZE_NUMBER);
+};
+
+const recursion = (numbers, acc, index = 0) => {
+  if (index === numbers.length) {
+    return acc;
+  }
+
+  return recursion(numbers, acc + numbers[index], index + 1);
+};
+
 test('빈 배열은 0을 반환한다', () => {
   expect(solution([])).toBe(0);
 });
