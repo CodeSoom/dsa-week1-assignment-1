@@ -1,3 +1,6 @@
+const INITIALIZE_NUMBER = 0;
+const SHOULD_CHUNK_SIZE = 20;
+
 /*
 1. 가장 익숙한 방법으로 문제를 해결해 주세요.
 const solution = (n) => {
@@ -22,6 +25,61 @@ const solution = (n) => {
     firstIndex = currentIndex;
   }
   return currentIndex;
+};
+ */
+/*
+2. 이번에는 재귀 함수로 문제를 해결해 주세요
+const solution = (n) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  if (n <= 1) {
+    return n;
+  }
+
+  if (n < SHOULD_CHUNK_SIZE) {
+    // eslint-disable-next-line no-use-before-define
+    return recursion(n);
+  }
+
+  // eslint-disable-next-line no-use-before-define
+  const chunkNumbers = chunk(n, SHOULD_CHUNK_SIZE);
+
+  // eslint-disable-next-line no-use-before-define
+  return chunkNumbers.reduce((acc, current) => acc + recursion(current), INITIALIZE_NUMBER);
+};
+
+const recursion = (n) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  if (n <= 1) {
+    return n;
+  }
+
+  return solution(n - 2) + solution(n - 1);
+};
+
+const chunk = (data = 0, size = 1) => {
+
+  if (data < size) {
+    return data;
+  }
+
+  const arr = [];
+  // eslint-disable-next-line no-shadow
+  const chunk = [];
+  for (let i = 0; i < data.length; i += size) {
+    chunk.push(i);
+    if (i % size === 0) {
+      arr.push(chunk);
+      chunk.length = 0;
+    }
+  }
+
+  return arr;
 };
  */
 
