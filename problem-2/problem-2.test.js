@@ -1,5 +1,29 @@
+/*
+1. 가장 익숙한 방법으로 문제를 해결해 주세요.
 const solution = (n) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  if (n <= 1) {
+    return n;
+  }
+
+  let currentIndex = 0;
+  let firstIndex = 1;
+  let result = 0;
+
+  // eslint-disable-next-line no-plusplus
+  for (let index = 2; index <= n; index++) {
+    currentIndex = firstIndex + result;
+
+    result = firstIndex;
+
+    firstIndex = currentIndex;
+  }
+  return currentIndex;
 };
+ */
 
 test('음수가 주어지면 0을 반환한다', () => {
   expect(solution(-1)).toBe(0);
