@@ -1,4 +1,5 @@
 const solution = (numbers) => {
+
 };
 
 test('빈 배열은 0을 반환한다', () => {
@@ -11,7 +12,7 @@ test('배열의 합을 반환한다', () => {
 });
 
 test('큰 배열이 입력으로 주어져도 RangeError를 던지지 않는다', () => {
-  const input = Array.from({ length: 10000 }, (_, i) => i + 1);
+  const input = Array.from({length: 10000}, (_, i) => i + 1);
 
   expect(() => solution(input))
     .not.toThrowError(new RangeError('Maximum call stack size exceeded'));
