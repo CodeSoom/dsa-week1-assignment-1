@@ -1,5 +1,17 @@
+// 2. 동적 프로그래밍
 const solution = (n) => {
-// 잘모르겠다
+  const cache = [0];
+
+  cache[1] = 1;
+  cache[2] = 2;
+  cache[3] = 4;
+
+  // eslint-disable-next-line no-plusplus
+  for (let index = 4; index <= n; index++) {
+    cache[index] = cache[index - 3] + cache[index - 2] + cache[index - 1];
+  }
+
+  return cache[n];
 };
 
 test('계단에 오를 수 있는 가지 수를 반환한다', () => {
