@@ -1,6 +1,7 @@
-const solution = () => {
-};
-
+/*
+1. 가장 익숙한 방법으로 문제를 해결해 주세요.
+const solution = (n = '') => parseInt(n, 2);
+*/
 test('10진수 숫자를 반환한다', () => {
   expect(solution('0')).toBe(0);
   expect(solution('1')).toBe(1);
