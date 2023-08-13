@@ -83,6 +83,22 @@ const chunk = (data = 0, size = 1) => {
 };
  */
 
+/*
+3.꼬리 재귀 함수로 바꿔보세요.
+4.꼬리 재귀 최적화를 통해서 최적화해 보세요.
+ */
+const solution = (n, prev = 0, result = 1) => {
+  if (n < INITIALIZE_NUMBER) {
+    return INITIALIZE_NUMBER;
+  }
+
+  if (n <= 1) {
+    return result;
+  }
+
+  return solution(n - 1, result, prev + result);
+};
+
 test('음수가 주어지면 0을 반환한다', () => {
   expect(solution(-1)).toBe(0);
 });
