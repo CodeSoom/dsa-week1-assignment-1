@@ -1,5 +1,9 @@
+/*
+1. 가장 익숙한 방법으로 문제를 해결해 주세요.
 const solution = (n) => {
+  return n.toString(2);
 };
+ */
 
 test('이진수 문자열을 반환한다', () => {
   expect(solution(0)).toBe('0');
