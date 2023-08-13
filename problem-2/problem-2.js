@@ -23,4 +23,31 @@ function solution(n) {
 }
 
 // 꼬리 재귀 함수로 바꿔보세요.
+function solution( n, current = 2, a = 0, b = 1 ) {
+  if (n <= 0) return 0;
+  if (n === 1) return n;
+
+  if(n === current) {
+    return a + b;
+  }
+  return solution(n, current+ 1, b, a + b);
+}
 // 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+function solution(n) {
+  if (n <= 0) return 0;
+  if (n === 1) return n;
+
+  let current = 2;
+  let a = 0; 
+  let b = 1;
+
+  while(true){
+    if(n === current) {
+      return a + b;
+    }
+    current = current + 1;
+    const temp = a;
+    a = b;
+    b = temp + b;
+  }
+}
