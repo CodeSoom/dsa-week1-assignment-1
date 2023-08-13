@@ -5,6 +5,20 @@ const solution = (n) => {
 };
  */
 
+/*
+ 2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+
+const solution = (n, answer = '') => {
+  if (n <= 1) {
+    return n + answer;
+  }
+  // eslint-disable-next-line no-param-reassign
+  answer = String(n % 2);
+  // eslint-disable-next-line no-param-reassign
+  n = Math.floor(n / 2);
+  return solution(n) + answer;
+};
+*/
 test('이진수 문자열을 반환한다', () => {
   expect(solution(0)).toBe('0');
   expect(solution(1)).toBe('1');
