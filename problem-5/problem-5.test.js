@@ -1,4 +1,11 @@
-const solution = () => {
+const solution = (a, b) => {
+    while(b > 0){
+        let r = a % b;
+        a = b;
+        b = r;
+    } 
+
+    return a;
 };
 
 test('최대 공약수를 반환한다', () => {

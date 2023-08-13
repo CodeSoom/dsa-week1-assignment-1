@@ -1,4 +1,5 @@
 const solution = (n) => {
+  return n.toString(2)
 };
 
 test('이진수 문자열을 반환한다', () => {

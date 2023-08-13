@@ -1,4 +1,16 @@
 const solution = (n) => {
+  if (n <= 0) return 0;
+  if (n === 1) return n;
+  
+  let num1 = 0;
+  let num2 = 1;
+  let result;
+  for (i = 1; i < n; i++){
+    result = num1 + num2;
+    num1 = num2;
+    num2 = result;
+  }
+  return result;
 };
 
 test('음수가 주어지면 0을 반환한다', () => {

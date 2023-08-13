@@ -1,4 +1,6 @@
 const solution = (numbers) => {
+  if (numbers.length === 0) return 0;
+  return numbers.reduce((prev, cur) => ( prev + cur));
 };
 
 test('빈 배열은 0을 반환한다', () => {

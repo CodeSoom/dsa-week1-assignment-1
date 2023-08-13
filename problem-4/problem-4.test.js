@@ -1,4 +1,5 @@
-const solution = () => {
+const solution = (n) => {
+  return parseInt(n, 2);
 };
 
 test('10진수 숫자를 반환한다', () => {
