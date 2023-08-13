@@ -18,6 +18,18 @@ const solution = (n, answer = 0, index = 0) => {
   return solution(n, answer, index);
 };
  */
+
+/*
+3.꼬리 재귀 함수로 바꿔보세요.
+4.꼬리 재귀 최적화를 통해서 최적화해 보세요.
+ */
+const solution = (n, answer = 0, index = 0) => {
+  if (index === n.length) {
+    return answer;
+  }
+  return solution(n,answer * 2 + Number(n[index]), index + 1);
+};
+
 test('10진수 숫자를 반환한다', () => {
   expect(solution('0')).toBe(0);
   expect(solution('1')).toBe(1);
