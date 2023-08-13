@@ -2,6 +2,22 @@
 1. 가장 익숙한 방법으로 문제를 해결해 주세요.
 const solution = (n = '') => parseInt(n, 2);
 */
+
+/*
+2. 재귀함수
+const solution = (n, answer = 0, index = 0) => {
+  if (index === n.length) {
+    return answer;
+  }
+  // eslint-disable-next-line no-param-reassign
+  answer = answer * 2 + Number(n[index]);
+
+  // eslint-disable-next-line no-param-reassign
+  index += 1;
+
+  return solution(n, answer, index);
+};
+ */
 test('10진수 숫자를 반환한다', () => {
   expect(solution('0')).toBe(0);
   expect(solution('1')).toBe(1);
