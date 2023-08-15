@@ -1,4 +1,4 @@
-/** n개의 계단이 있습니다. 
+ /** n개의 계단이 있습니다. 
  * 계단은 한 번에 1개, 2개, 최대 3개 오를 수 있습니다.
  * 계단의 수 n이 주어졌을 때 계단을 오르는 방법에는 몇 가지가 있는지 
  * 계산하는 함수를 작성해 주세요.
@@ -26,4 +26,18 @@ function solution(n) {
     stepArray[i] = stepArray[i - 1] + stepArray[i - 2] + stepArray[i - 3]
   }
   return stepArray[n]
+}
+
+function solution(n, memo = {}) {
+  if (n <= 0) {
+    return 0;
+  }
+
+  if (n === 1 || n === 2 ) {
+    return n
+  }
+
+  if (!memo[n]) {
+    memo[n] = solution(n - 3, memo) + solution(n - 2, memo)+solution(n - 1, memo)
+  }
 }

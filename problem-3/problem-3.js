@@ -15,5 +15,38 @@ function solution(n) {
   return answer;
 }
 
+function solution(n) {
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  const quentiant = Math.floor(n / 2);
+  const remainder = `${n % 2}`;
+  return solution(quentiant) + remainder;
+}
+
 // 꼬리 재귀 함수로 바꿔보세요.
+function solution(n, result = '') {
+  if (n === 0) return 0 + result;
+  if (n === 1) return 1 + result;
+
+  const quentiant = Math.floor(n / 2);
+  const remainder = `${n % 2}`;
+
+  return solution(quentiant, remainder + result);
+}
+
 // 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+function solution(n) {
+  let result = '';
+  while (true) {
+    
+    if (n === 0) return 0 + result;
+    if (n === 1) return 1 + result;
+    
+    const remainder = `${n % 2}`;
+    n = Math.floor(n / 2);
+    result = remainder + result;
+  }
+
+}
+
+console.log(solution(8));
