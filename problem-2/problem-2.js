@@ -1,3 +1,13 @@
+/** 피보나치 수열
+ * 0, 0
+ * 1, 1
+ * 2, 1
+ * 3, 1
+ * 4, 3
+ * 5, 5
+ * 6, 8
+ */
+
 // 가장 익숙한 방법으로 문제를 해결해 주세요.
 const solution = (n) => {
   if (n <= 0) return 0;
@@ -15,6 +25,19 @@ const solution = (n) => {
 };
 
 // 이번에는 재귀 함수로 문제를 해결해 주세요.
+// 마이 버전
+const solution = (n) => {
+  if( n <= 0) {
+    return 0;
+  }
+  if(n === 1) {
+    return 1;
+  }
+
+  return solution(n - 2) + solution(n -1);
+};
+
+// 쌤 버전
 function solution(n) {
   if (n <= 0) return 0;
   if (n === 1) return n;
@@ -51,3 +74,7 @@ function solution(n) {
     b = temp + b;
   }
 }
+
+
+
+// console.log(solution(5));
