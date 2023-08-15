@@ -13,21 +13,50 @@
 // 모르겠음
 
 // [4] 꼬리 재귀 최적화
-const solution = (bigger, smaller) => {
-  let a = bigger;
-  let b = smaller;
-  let rest;
+// const solution = (smaller, bigger) => {
+//   let a = smaller;
+//   let b = bigger;
+//   let rest;
 
-  while (rest !== 0) {
-    rest = a % b;
+//   while (rest !== 0) {
+//     rest = a % b;
+//     a = b;
+//     b = rest;
+//   }
+
+//   return a;
+// };
+
+// 강의 해설 --------------------------------------------------------------------------
+// 나누는 수 % 나머지
+// 93 % 155 // rest = 93
+// 155 % 93 // rest = 62
+// 93 % 62 // rest = 31
+// 62 % 31 // rest = 0
+
+// [꼬리재귀함수로]
+// const solution = (a, b) => {
+//   if (a % b === 0) {
+//     return b;
+//   }
+
+//   return solution(b, a % b);
+// };
+
+// [꼬리재귀 최적화]
+const solution = (a, b) => {
+  while (true) {
+    if (a % b === 0) {
+      return b;
+    }
+    const rest = a % b;
     a = b;
     b = rest;
   }
-
-  return a;
 };
 
 test('최대 공약수를 반환한다', () => {
+  expect(solution(93, 155)).toBe(31);
   expect(solution(4, 12)).toBe(4);
   expect(solution(3, 7)).toBe(1);
   expect(solution(16, 72)).toBe(8);

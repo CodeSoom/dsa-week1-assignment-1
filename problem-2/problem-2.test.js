@@ -1,7 +1,7 @@
 // [1] 가장 익숙한 방법
 // [3] 꼬리 재귀 함수로
 // const solution = (n, cnt = 2, a = 0, b = 1) => {
-//   if (n === 0) {
+//   if (n === 0 || n < 0) {
 //     return 0;
 //   }
 
@@ -13,38 +13,80 @@
 //     return a + b;
 //   }
 
-//   const c = a + b;
-//   cnt += 1;
-
-//   return solution(n, cnt, b, c);
+//   return solution(n, cnt+1, b, a + b);
 // };
 
 // [2] 재귀 함수로 <- 모르겠음
 
 // [4] 꼬리 재귀 함수 최적화
+// const solution = (n) => {
+//   if (n === 0 || n < 0) {
+//     return 0;
+//   }
+
+//   if (n === 1) {
+//     return 1;
+//   }
+
+//   let cnt = 1;
+//   let a = 0;
+//   let b = 1;
+//   let c = 0;
+
+//   while (cnt !== n) {
+//     c = a + b;
+//     a = b;
+//     b = c;
+
+//     cnt += 1;
+//   }
+
+//   return b;
+// };
+
+// 강의 해설 --------------------------------------------------------------------------
+// [재귀함수로]
+/*
 const solution = (n) => {
-  if (n === 0 || n < 0) {
-    return 0;
-  }
+  if (n === 0) return 0;
+  if (n === 1) return 1;
 
-  if (n === 1) {
-    return 1;
-  }
+  return solution(n - 2) + solution(n - 1);
+};
+*/
 
-  let cnt = 1;
+// [꼬리재귀함수]
+/*
+const solution = (n, current = 2, a = 0, b = 1) => {
+  if (n === 0 || n < 0) return 0;
+  if (n === 1) return 1;
+  if (current === n) {
+    return a + b;
+  }
+  return solution(n, current + 1, b, a + b);
+};
+*/
+
+// [꼬리재귀함수 최적화]
+const solution = (n) => {
+  if (n === 0 || n < 0) return 0;
+  if (n === 1) return 1;
+
+  let current = 2;
   let a = 0;
   let b = 1;
-  let c = 0;
 
-  while (cnt !== n) {
-    c = a + b;
+  while (true) {
+    if (current === n) {
+      return a + b;
+    }
+    const temp = a;
     a = b;
-    b = c;
+    b = temp + b;
+    // [a, b] = [b, temp + b];
 
-    cnt += 1;
+    current += 1;
   }
-
-  return b;
 };
 
 test('음수가 주어지면 0을 반환한다', () => {

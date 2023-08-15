@@ -4,26 +4,29 @@
 // [2] 재귀 함수로 <- 모르겠음
 
 // [3] 꼬리 재귀 함수로
-// const solution = (n, cnt = 0, sum = "0") => {
-//   if (n === cnt) {
-//     return sum;
-//   }
+/*
+const solution = (n, cnt = 0, sum = "0") => {
+  if (n === cnt) {
+    return sum;
+  }
 
-//   sum = `${+sum + 1}`;
+  sum = `${+sum + 1}`;
 
-//   while (sum.includes("2")) {
-//     const arr = ["", ...sum];
-//     const twoIndex = arr.indexOf("2");
-//     arr[twoIndex] = "0";
-//     arr[twoIndex - 1] = +arr[twoIndex - 1] + 1;
-//     sum = arr.join("");
-//   }
+  while (sum.includes("2")) {
+    const arr = ["", ...sum];
+    const twoIndex = arr.indexOf("2");
+    arr[twoIndex] = "0";
+    arr[twoIndex - 1] = +arr[twoIndex - 1] + 1;
+    sum = arr.join("");
+  }
 
-//   cnt += 1;
-//   return solution(n, cnt, sum);
-// };
+  cnt += 1;
+  return solution(n, cnt, sum);
+};
+*/
 
 // [4] 꼬리 재귀 최적화
+/*
 const solution = (n) => {
   let sum = '0';
 
@@ -39,6 +42,42 @@ const solution = (n) => {
     }
   }
   return sum;
+};
+*/
+
+// 강의 해설 --------------------------------------------------------------------------
+// [재귀함수로]
+// const solution = (n) => {
+//   if (n === 0) return '0';
+//   if (n === 1) return '1';
+
+//   const quentient = Math.floor(n / 2);
+//   const remainder = `${n % 2}`;
+
+//   return solution(quentient) + remainder;
+// };
+
+// [꼬리 재귀함수로]
+// const solution = (n, result = '') => {
+//   if (n === 0) return `0${result}`;
+//   if (n === 1) return `1${result}`;
+
+//   const quentient = Math.floor(n / 2);
+//   const remainder = `${n % 2}`;
+
+//   return solution(quentient, remainder + result);
+// };
+
+// [꼬리재귀 최적화]
+const solution = (n) => {
+  let remainder = '';
+
+  while (true) {
+    if (n === 0) return `0${remainder}`;
+    if (n === 1) return `1${remainder}`;
+    remainder = `${n % 2}${remainder}`;
+    n = Math.floor(n / 2);
+  }
 };
 
 test('이진수 문자열을 반환한다', () => {
