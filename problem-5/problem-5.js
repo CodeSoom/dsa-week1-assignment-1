@@ -17,6 +17,14 @@ function solution(a, b) {
   if (result === 0) return b; 
   return solution(b, result);
 }
+// 쌤버전
+function solution(a, b) {
+  if (a % b === 0) {
+    return b;
+  }
+  return solution(b, a % b);
+}
+
 // 꼬리 재귀 최적화를 통해서 최적화해 보세요.
 function solution(a, b) {
   while (true) {
