@@ -1,49 +1,4 @@
-const solution3 = (n) => {
-  if( n <= 0) {
-    return 0;
-  }
-  if(n === 1) {
-    return 1;
-  }
-
-  return solution(n - 2) + solution(n -1);
-};
-
-const solution2 = (n, current = 2, a = 0, b = 1) => {
-  if( n <= 0) {
-    return 0;
-  }
-  if(n === 1) {
-    return n;
-  }
-  if(n === current){
-    return a + b;
-  }
-
-  return solution(n,  current + 1, b, a + b);
-};
-
 const solution = (n) => {
-  if( n <= 0) {
-    return 0;
-  }
-  if(n === 1) {
-    return n;
-  }
-  
-  let current = 2;
-  let a = 0;
-  let b = 1;
-
-  while(true){
-    if(n === current){
-      return a + b;
-    }
-    current = current + 1;
-    const temp = a;
-    a = b;
-    b = temp + b; 
-  }
 };
 
 test('음수가 주어지면 0을 반환한다', () => {

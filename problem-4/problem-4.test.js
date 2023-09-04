@@ -1,44 +1,4 @@
-const solution4 = (n) => {
-  return parseInt(n, 2);
-};
-
-const solution3 = (n) => {
-  if(n === '0') {
-    return 0;
-  }
-  if(n === '1') {
-    return 1;
-  }
-  const first = n[0]
-  return (2 ** (n.length - 1)) * Number(first) + solution(n.slice(1));
-};
-
-const solution2 = (n, result = 0) => {
-  if(n === '0') {
-    return 0 + result;
-  }
-  if(n === '1') {
-    return 1 + result;
-  }
-  const first = n[0]
-  return solution(n.slice(1), ((2 ** (n.length - 1)) * Number(first)) + result);
-};
-
-const solution = (n) => {
-  let result = 0;
-
-  while(true) {
-    if(n === '0') {
-      return 0 + result;
-    }
-    if(n === '1') {
-      return 1 + result;
-    }
-    const first = n[0]
-    result = ((2 ** (n.length - 1)) * Number(first)) + result;
-    n = n.slice(1);
-
-  }
+const solution = () => {
 };
 
 test('10진수 숫자를 반환한다', () => {

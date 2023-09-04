@@ -1,35 +1,4 @@
-const solution4 = (n) => {
-  return n.toString(2)
-};
-
-const solution2 = (n, result = '') => {
-  if(n === 0) {
-    return '0' +  result;
-  }
-  if(n === 1) {
-    return '1' + result;
-  }
-  const quentiant = Math.floor(n / 2);
-  const remainder = `${n % 2}`;
-  return solution(quentiant, remainder + result);
-
-};
-
 const solution = (n) => {
-  let result = '';
-
-  while(true){
-    if(n === 0) {
-      return 0 +  result;
-    }
-    if(n === 1) {
-      return 1 + result;
-    }
-    const remainder = `${n % 2}`;
-    n = Math.floor(n / 2);
-    result = remainder + result;
-  }
-
 };
 
 test('이진수 문자열을 반환한다', () => {
