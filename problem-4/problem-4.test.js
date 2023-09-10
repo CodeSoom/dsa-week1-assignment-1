@@ -1,4 +1,13 @@
-const solution = () => {
+const solution = (input = '') => {
+  let result = 0;
+  let number = 0;
+
+  for (let index = input.length - 1; index >= 0; index -= 1) {
+    result += parseInt(input.charAt(index), 10) * (2 ** number);
+    number += 1;
+  }
+
+  return result;
 };
 
 test('10진수 숫자를 반환한다', () => {
