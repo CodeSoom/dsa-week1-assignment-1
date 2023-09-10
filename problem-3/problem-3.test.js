@@ -1,4 +1,19 @@
 const solution = (n) => {
+  if (n < 2) {
+    return n.toString();
+  }
+
+  let current = n;
+  let result = '';
+
+  while (current > 0) {
+    const remains = current % 2;
+
+    result = remains.toString() + result;
+    current = Math.floor(current / 2);
+  }
+
+  return result;
 };
 
 test('이진수 문자열을 반환한다', () => {
