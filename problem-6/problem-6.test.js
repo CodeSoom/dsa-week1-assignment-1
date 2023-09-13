@@ -1,4 +1,26 @@
 const solution = (n) => {
+  const memo = {};
+
+  // 메모이제이션 전역 변수를 사용하지 않기 위해서 helper 함수 선언
+  const helper = (num) => {
+    if (num < 0) {
+      return 0;
+    }
+
+    if (num === 0) {
+      return 1;
+    }
+
+    if (memo[num]) {
+      return memo[num];
+    }
+
+    memo[num] = helper(num - 3) + helper(num - 2) + helper(num - 1);
+
+    return memo[num];
+  };
+
+  return helper(n);
 };
 
 test('계단에 오를 수 있는 가지 수를 반환한다', () => {

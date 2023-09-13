@@ -1,5 +1,4 @@
-const solution = (numbers) => {
-};
+const solution = (numbers) => numbers.reduce((acc, cur) => acc + cur, 0);
 
 test('빈 배열은 0을 반환한다', () => {
   expect(solution([])).toBe(0);

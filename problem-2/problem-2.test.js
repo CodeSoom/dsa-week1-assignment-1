@@ -1,4 +1,15 @@
 const solution = (n) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  const result = [0, 1];
+
+  for (let i = 2; i <= n; i += 1) {
+    result[i] = result[i - 1] + result[i - 2];
+  }
+
+  return result[n];
 };
 
 test('음수가 주어지면 0을 반환한다', () => {

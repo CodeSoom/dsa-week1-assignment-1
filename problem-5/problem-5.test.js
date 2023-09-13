@@ -1,4 +1,11 @@
-const solution = () => {
+const solution = (a, b) => {
+  const r = a % b;
+
+  if (r === 0) {
+    return b;
+  }
+
+  return solution(b, r);
 };
 
 test('최대 공약수를 반환한다', () => {
