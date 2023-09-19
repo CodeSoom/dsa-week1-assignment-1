@@ -17,12 +17,30 @@ const solution1 = (a, b) => {
   return a;
 };
 
-const solution = (a, b) => {
+const solution2 = (a, b) => {
   //재귀호출
   if (b == 0) {
     return a;
   } else {
-    return solution(b, a % b);
+    return solution2(b, a % b);
+  }
+};
+
+//코드숨 정답
+// 이미 꼬리재귀
+const solution3 = (a,b) => { 
+  if (a % b === 0) return b;
+  return solution3(b, a % b);
+};
+
+// 꼬리재귀 최적화
+const solution = (a,b) => {
+  while (true) {
+    if (a % b === 0) return b;
+
+    const temp = a;
+    a = b;
+    b = temp % b;
   }
 };
 

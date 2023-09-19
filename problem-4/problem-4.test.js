@@ -49,7 +49,7 @@ const solution4 = (n, result = 0) => {
 
 // 꼬리재귀 최적화
 const solution = (n) => {
-  let numbers = [...n]; //문자열을 파싱해서 String[]로 만든다.
+  let numbers = [...n]; //문자열을 파싱해서 String[]로 만든다. 파라미터를 직접 수정하는 것보다 카피본을 만들어서 수정하는 것이 불변성 측면에서 바람직
   let result = 0;
 
   while (true) {
