@@ -1,4 +1,11 @@
 const solution = (numbers) => {
+  let sum = 0;
+
+  for (let i = 0 ; i < numbers.length ; i ++) {
+    sum += numbers[i];
+  }
+
+  return sum;
 };
 
 test('빈 배열은 0을 반환한다', () => {
