@@ -1,4 +1,47 @@
+// const solutionRecursive = (n) => {
+//   if (n <= 0) {
+//     return 0;
+//   }
+
+//   if (n === 1) {
+//     return 1;
+//   }
+
+//   return solutionRecursive(n - 2) + solutionRecursive(n - 1);
+// };
+
+// const solutionTailRecursive = (n, prv = 0, cur = 1) => {
+//   if (n <= 0) {
+//     return prv;
+//   }
+
+//   if (n === 1) {
+//     return cur;
+//   }
+
+//   return solutionTailRecursive(n - 1, cur, prv + cur);
+// };
+
 const solution = (n) => {
+  let prv = 0;
+  let cur = 1;
+  let tmp = 1;
+  let counter = n;
+
+  while (true) {
+    if (counter <= 0) {
+      return prv;
+    }
+
+    if (counter === 1) {
+      return cur;
+    }
+
+    tmp = prv + cur;
+    prv = cur;
+    cur = tmp;
+    counter -= 1;
+  }
 };
 
 test('음수가 주어지면 0을 반환한다', () => {

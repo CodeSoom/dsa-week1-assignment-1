@@ -1,4 +1,13 @@
-const solution = (n) => {
+const solution = (n, result = '') => {
+  if (n === 0 && result === '') {
+    return '0';
+  }
+
+  if (n === 0) {
+    return result;
+  }
+
+  return solution(Math.floor(n / 2), (n % 2) + result);
 };
 
 test('이진수 문자열을 반환한다', () => {

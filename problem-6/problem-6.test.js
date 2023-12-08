@@ -1,4 +1,37 @@
-const solution = (n) => {
+// const solutionRecursive = (n) => {
+//   if (n === 1) {
+//     return 1;
+//   }
+
+//   if (n === 2) {
+//     return 2;
+//   }
+
+//   if (n === 3) {
+//     return 4;
+//   }
+
+//   return solutionRecursive(n - 3) + solutionRecursive(n - 2) + solutionRecursive(n - 1);
+// };
+
+const solution = (n, memo = []) => {
+  if (n === 1) {
+    return 1;
+  }
+
+  if (n === 2) {
+    return 2;
+  }
+
+  if (n === 3) {
+    return 4;
+  }
+
+  if (!memo[n]) {
+    return solution(n - 3, memo) + solution(n - 2, memo) + solution(n - 1, memo);
+  }
+
+  return memo[n];
 };
 
 test('계단에 오를 수 있는 가지 수를 반환한다', () => {
