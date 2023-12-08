@@ -1,34 +1,34 @@
-const solution1 = (numbers) => {
-  let acc = 0;
+// const solutionEasy = (numbers) => {
+//   let acc = 0;
 
-  numbers.forEach((cur) => {
-    acc += cur;
-  });
+//   numbers.forEach((cur) => {
+//     acc += cur;
+//   });
 
-  return acc;
-};
+//   return acc;
+// };
 
-const solution2 = (numbers) => {
-  if (numbers.length === 0) {
-    return 0;
-  }
+// const solutionRecursive = (numbers) => {
+//   if (numbers.length === 0) {
+//     return 0;
+//   }
 
-  return numbers.pop() + solution2(numbers);
-};
+//   return numbers.pop() + solutionRecursive(numbers);
+// };
 
-const solution3 = (numbers) => {
-  let acc = 0;
+// const solutionLoop = (numbers) => {
+//   let acc = 0;
 
-  while (true) {
-    if (numbers.length === 0) {
-      break;
-    }
+//   while (true) {
+//     if (numbers.length === 0) {
+//       break;
+//     }
 
-    acc += numbers.pop();
-  }
+//     acc += numbers.pop();
+//   }
 
-  return acc;
-};
+//   return acc;
+// };
 
 const solution = (numbers) => numbers.reduce((acc, cur) => acc + cur, 0);
 
