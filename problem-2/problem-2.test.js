@@ -1,5 +1,34 @@
+// 1. 가장 익숙한 방법으로 문제를 해결해 주세요.
 const solution = (n) => {
+  const list = [1, 1];
+  let count = 2;
+
+  while (count <= n) {
+    count += 1;
+    const sum = list.slice(-2).reduce((a, b) => a + b, 0);
+    list.push(sum);
+  }
+
+  return n > 0 ? list[n - 1] : 0;
 };
+
+// 2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+// 4번째 테스트 통과 못함
+// const solution = (n) => {
+//   if (n < 0) {
+//     return 0;
+//   }
+
+//   if (n === 0 || n === 1) {
+//     return n;
+//   }
+
+//   return solution(n - 1) + solution(n - 2);
+// };
+
+// 3. 꼬리 재귀 함수로 바꿔보세요.
+// 4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+// 1번 풀이와 동일
 
 test('음수가 주어지면 0을 반환한다', () => {
   expect(solution(-1)).toBe(0);
