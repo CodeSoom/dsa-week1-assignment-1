@@ -1,4 +1,26 @@
-const solution = () => {
+// 1. 가장 익숙한 방법으로 문제를 해결해 주세요.
+// const solution = (n) => parseInt(n, 2);
+
+// 2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+// 3. 꼬리 재귀 함수로 바꿔보세요.
+// 4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+const solution = (n) => {
+  let result = 0;
+
+  while (true) {
+    if (n === '0') {
+      return 0 + result;
+    }
+
+    if (n === '1') {
+      return 1 + result;
+    }
+
+    const first = n[0];
+
+    result += (2 ** (n.length - 1)) * Number(first);
+    n = n.slice(1);
+  }
 };
 
 test('10진수 숫자를 반환한다', () => {
