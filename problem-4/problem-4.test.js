@@ -1,4 +1,67 @@
-const solution = () => {
+// const solution = (binaryString) => {
+//  let decimalNumber = 0;
+//  for (let bitIndex = 0; bitIndex < binaryString.length; bitIndex += 1) {
+//    const currentBit = parseInt(binaryString[bitIndex], 10);
+//    const bitWeight = 2 ** (binaryString.length - 1 - bitIndex);
+//
+//    const currentBitValue = currentBit * bitWeight;
+//    decimalNumber += currentBitValue;
+//  }
+//
+//  return decimalNumber;
+// };
+
+// const solution = (
+//  binaryString,
+//  currentIndex = 0,
+//  bitWeight = binaryString.length - 1,
+// ) => {
+//  if (binaryString === '0') {
+//    return 0;
+//  }
+//
+//  if (binaryString === '1') {
+//    return 1;
+//  }
+//
+//  if (bitWeight < 0) {
+//    return 0;
+//  }
+//
+//  const currentBit = parseInt(binaryString[currentIndex], 10);
+//  const currentBitValue = (2 ** bitWeight) * currentBit;
+//
+//  return currentBitValue + solution(
+//    binaryString,
+//    currentIndex + 1,
+//    bitWeight - 1,
+//  );
+// };
+
+const solution = (
+  binaryString,
+  currentIndex = 0,
+  bitWeight = binaryString.length - 1,
+  decimalNumber = 0,
+) => {
+  if (binaryString === '0') {
+    return 0;
+  }
+
+  if (binaryString === '1') {
+    return 1;
+  }
+
+  if (bitWeight < 0) {
+    return decimalNumber;
+  }
+
+  return solution(
+    binaryString,
+    currentIndex + 1,
+    bitWeight - 1,
+    decimalNumber + (2 ** bitWeight) * parseInt(binaryString[currentIndex], 10),
+  );
 };
 
 test('10진수 숫자를 반환한다', () => {
