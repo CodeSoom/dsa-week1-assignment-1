@@ -1,4 +1,27 @@
-const solution = () => {
+/*
+const solution = (num1, num2) => {
+  let smallerNumber = num1;
+  let largerNumber = num2;
+
+  while (true) {
+    const remainder = largerNumber % smallerNumber;
+
+    if (remainder === 0) {
+      return smallerNumber;
+    }
+
+    largerNumber = smallerNumber;
+    smallerNumber = remainder;
+  }
+};
+*/
+
+const solution = (smallerNumber, largerNumber, remainder = largerNumber % smallerNumber) => {
+  if (remainder === 0) {
+    return smallerNumber;
+  }
+
+  return solution(remainder, smallerNumber);
 };
 
 test('최대 공약수를 반환한다', () => {
