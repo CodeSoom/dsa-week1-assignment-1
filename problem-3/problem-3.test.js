@@ -1,4 +1,30 @@
-const solution = (n) => {
+// const solution = (n) => {
+//  if (n === 0) {
+//    return '0';
+//  }
+//
+//  let number = n;
+//  let binaryString = '';
+//
+//  while (number > 0) {
+//    const remainder = number % 2;
+//    binaryString = remainder + binaryString;
+//    number = Math.floor(number / 2);
+//  }
+//
+//  return binaryString;
+// };
+
+const solution = (n, binaryString = '') => {
+  if (n === 0) {
+    return '0';
+  }
+
+  if (n === 1) {
+    return `1${binaryString}`;
+  }
+
+  return solution(Math.floor(n / 2), (n % 2).toString() + binaryString);
 };
 
 test('이진수 문자열을 반환한다', () => {
