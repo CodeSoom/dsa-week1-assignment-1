@@ -45,25 +45,23 @@
 
 // 4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
 const solution = (n) => {
-  let number = n;
-  let prev = 0;
-  let curr = 1;
-  let acc = 1;
+  let currentNumber = n;
+  let previousValue = 0;
+  let currentValue = 1;
+  let nextValue;
 
-  while (true) {
-    if (number <= 0) {
-      return prev;
+  while (currentNumber > 0) {
+    if (currentNumber === 1) {
+      return currentValue;
     }
 
-    if (number === 1) {
-      return curr;
-    }
-
-    acc = prev + curr;
-    prev = curr;
-    curr = acc;
-    number -= 1;
+    nextValue = previousValue + currentValue;
+    previousValue = currentValue;
+    currentValue = nextValue;
+    currentNumber -= 1;
   }
+
+  return previousValue;
 };
 
 test('음수가 주어지면 0을 반환한다', () => {
