@@ -1,4 +1,50 @@
+//1. 가장 익숙한 방법으로 문제를 해결해 주세요.
+const solution1 = (n) => {
+  if(n < 2) return n.toString();
+
+  let result = [];
+
+  while(true){
+    if(n < 2){
+      result.push(n);
+      return result.reverse().join('');
+    }
+
+    const remainder = n % 2;
+    result.push(remainder);
+    n = Math.floor(n / 2);
+  }
+};
+
+//2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+const solution2 = (n) => {
+  if(n < 2) return n.toString();
+
+  const remainder = n % 2,
+        quotient = Math.floor(n / 2);
+  
+  return `${solution2(quotient)}${remainder.toString()}`;
+
+};
+
+//3. 꼬리 재귀 함수로 바꿔보세요.
+const solution3 = (n, result = '') => {
+  if(n < 2) return `${n}${result}`;
+
+  return solution3(Math.floor(n / 2), n % 2 + result);
+};
+
+//4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
 const solution = (n) => {
+  let result = '';
+
+  while(true){
+    if(n < 2) return `${n}${result}`;
+
+    const remainder = n % 2;
+    n = Math.floor(n / 2);
+    result = `${remainder}${result}`;
+  }
 };
 
 test('이진수 문자열을 반환한다', () => {

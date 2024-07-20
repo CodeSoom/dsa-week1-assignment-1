@@ -1,4 +1,44 @@
-const solution = (n) => {
+//1. 재귀 함수로 문제를 해결해 주세요.
+const solution1 = (n) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  return solution1(n - 3) + solution1(n - 2) + solution1(n - 1);
+};
+//2. 다이나믹 프로그래밍으로 최적화 해주세요.
+const solution2 = (n, memo = []) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  if(!memo[n]){
+    memo[n] = solution2(n - 3, memo) + solution2(n - 2, memo) + solution2(n - 1, memo);
+  }
+
+  return memo[n];
+};
+
+const solution = (n, current = 2, a = 0, b = 1, c = 1) => {
+  if (n < 0) {
+    return 0;
+  }
+
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  if(n === current) return a + b + c;
+
+  return solution(n, current + 1, b, c, a + b + c);
+  
 };
 
 test('계단에 오를 수 있는 가지 수를 반환한다', () => {

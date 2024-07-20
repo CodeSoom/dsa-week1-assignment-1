@@ -1,5 +1,53 @@
-const solution = (n) => {
+
+// 1. 가장 익숙한 방법으로 문제를 해결해 주세요.
+const solution1 = (n) => {
+  if(n <= 0) return 0;
+  if(n === 1) return 1;
+
+  let array = [0, 1];
+
+  for(let i=2; i <= n; i+=1){
+    array[i] = array[i - 2] + array[i - 1];
+  }
+
+  return array[n];
 };
+
+//2. 이번에는 재귀 함수로 문제를 해결해 주세요.
+const solution2 = (n) => {
+  if(n <= 0) return 0;
+  if(n === 1) return 1;
+
+  return solution2(n-2) + solution2(n-1);
+}
+
+//3. 꼬리 재귀 함수로 바꿔보세요.
+const solution3 = (n, prev = 0, curr = 1) => {
+  if(n <= 0) return prev;
+  if(n === 1) return curr;
+
+  return solution3(n-1, curr, prev + curr);
+
+}
+
+//4. 꼬리 재귀 최적화를 통해서 최적화해 보세요.
+const solution = (n) => {
+  let param = n,
+      prev = 0,
+      curr = 1,
+      sumResult = 0;
+
+  while(true){
+    if(param <= 0) return prev;
+    if(param === 1) return curr;
+
+    sumResult = prev + curr;
+    prev = curr;
+    curr = sumResult;
+    param -= 1;
+  }
+}
+
 
 test('음수가 주어지면 0을 반환한다', () => {
   expect(solution(-1)).toBe(0);
